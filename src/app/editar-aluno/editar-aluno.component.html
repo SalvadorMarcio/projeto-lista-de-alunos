@@ -1,0 +1,53 @@
+
+<!--editar-aluno.component.html-->
+
+<h2>{{ editar ? 'Editar' : 'Adicionar' }} Aluno</h2>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" formControlName="nome" name="aluno" required>
+    <span *ngIf="formulario.get('nome')?.hasError('required') && formulario.get('nome')?.touched" class="error-message">
+      Nome é obrigatório.
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email" name="email" required>
+    <span *ngIf="formulario.get('email')?.hasError('required') && formulario.get('email')?.touched" class="error-message">
+      Email é obrigatório.
+    </span>
+    <span *ngIf="formulario.get('email')?.hasError('email') && formulario.get('email')?.touched" class="error-message">
+      Email inválido.
+    </span>
+  </div>
+
+  <!--<div class="form-group">
+    <label for="idade">Idade:</label>
+    <input type="number" id="idade" formControlName="idade" name="idade" required>
+    <span *ngIf="formulario.get('idade')?.hasError('required') && formulario.get('idade')?.touched" class="error-message">
+      Idade é obrigatória.
+    </span>
+    <span *ngIf="formulario.get('idade')?.hasError('min') && formulario.get('idade')?.touched" class="error-message">
+      Idade deve ser maior que 0.
+    </span>
+  </div>-->
+
+  <div class="form-group">
+    <label for="matricula">Matrícula:</label>
+    <input type="text" id="matricula" formControlName="matricula" name="matricula" required>
+    <span *ngIf="formulario.get('matricula')?.hasError('required') && formulario.get('matricula')?.touched" class="error-message">
+      Matrícula é obrigatória.
+    </span>
+  </div>
+
+  <button type="submit" [disabled]="!formulario.valid" class="btn-adicionar">
+    {{ editar ? 'Atualizar' : 'Adicionar' }}
+  </button>
+</form>
+
+
+
+
+
